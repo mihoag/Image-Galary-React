@@ -9,6 +9,7 @@ import PhotoList from './page/PhotoList';
 import PhotoDetail from './page/PhotoDetail';
 import './App.css';
 import MainLayout from './layouts/MainLayout';
+import NotFoundPage from './page/NotFoundPage';
 
 function App() {
   const router = createBrowserRouter(
@@ -20,7 +21,9 @@ function App() {
           path='/photos/:id'
           element={<PhotoDetail/>}
         />
+         <Route path='*' element={<NotFoundPage />} />
       </Route>
+      
     )
   );
 
