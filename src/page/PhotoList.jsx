@@ -41,16 +41,14 @@ const PhotoList = () => {
   }, [page]);
 
   const handleScroll = () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-    const clientHeight = document.documentElement.clientHeight || window.innerHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = window.innerHeight;
     if (scrollTop + clientHeight >= scrollHeight-1 && !loading) {
       setPage((prevPage) => prevPage + 1);
     }
   };
 
-
-  
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -77,8 +75,6 @@ const PhotoList = () => {
 
       {!hasMore && <div className="end">No more photos</div>}
     </div>
-
-   
   );
 };
 
