@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import PhotoList from './page/PhotoList';
 import PhotoDetail from './page/PhotoDetail';
+import HomePage from './page/HomePage';
 import './App.css';
 import MainLayout from './layouts/MainLayout';
 import NotFoundPage from './page/NotFoundPage';
@@ -15,7 +16,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<MainLayout />}>
-        <Route index element={<PhotoList />} />
+        <Route index element={<HomePage />} />
         <Route path='/photos' element={<PhotoList />} />
         <Route
           path='/photos/:id'

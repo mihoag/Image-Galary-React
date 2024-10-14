@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import Button from './Button'; // Ensure this path is correct
 import logo from '../assets/images/logo.png'; // Ensure this path is correct
 
 const Navbar = () => {
@@ -14,10 +13,17 @@ const Navbar = () => {
                 Image Gallery
               </span>
             </NavLink>
-            <div className='md:ml-auto'>
+            <div className='md:ml-auto '>
               <div className='flex space-x-2'>
+              <NavLink to='/'>
+                  <span className='text-white text-2md font-bold mx-3'>
+                    Home
+                  </span>
+                </NavLink>
                 <NavLink to='/photos'>
-                  <Button text='List photos' />
+                  <span className='text-white text-2md font-bold mx-3'>
+                    Gallery
+                  </span>
                 </NavLink>
               </div>
             </div>
