@@ -28,45 +28,33 @@ const PhotoDetail = () => {
     <div className="container mx-auto p-6">
       <Spinner alignStype={'flex justify-center items-center h-screen'} loading={loading} />
       {photo && (
-        <section className="py-5">
-          <div className="container mx-auto">
-            <div className="lg:flex lg:space-x-5">
-              {/* Main Image Section */}
-              <aside className="lg:w-1/2">
-                <div className="rounded-lg mb-3 flex justify-center">
-                  <a href={photo.urls.full} target="_blank" rel="noopener noreferrer">
-                    <img
-                      src={photo.urls.full}
-                      alt={photo.alt_description}
-                      className="rounded-lg max-w-full max-h-screen m-auto"
-                    />
-                  </a>
-                </div>
-
-                {/* Extra Images */}
-              </aside>
-
-              {/* Image Details */}
-              <main className="lg:w-1/2">
-                <div className="lg:pl-3">
-                  <h4 className="text-2xl font-bold text-gray-900">The title of the image</h4>
-
-                  {/* Category and Brand Info */}
-                  <div className="my-4">
-                    <div className="my-1">
-                      <dt className="font-bold">Description:</dt>
-                      <dd className="text-gray-600">{photo.alt_description}</dd>
-                    </div>
-                    <div className="my-1">
-                      <dt className="font-bold">Author:</dt>
-                      <dd className="text-gray-600">{photo.user.name}</dd>
-                    </div>
-                  </div>
-                </div>
-              </main>
+        <div className="container mx-auto mt-4 mb-4">
+        <h5 className="text-white font-light mb-3">
+          Photo by: <span id="photo-user-name">${photo.user.name}</span>
+        </h5>
+        <div className="border rounded-lg overflow-hidden">
+          <img className="w-full h-auto" src={photo.urls.full} alt="Photo by ${photo.user.name}" />
+          <div className="p-4">
+          <h5 className="text-lg font-semibold">Photo Title</h5>
+            <div className="mb-2">
+              <p className="text-gray-700">Title of the photo</p>
+            </div>
+            <h5 className="text-lg font-semibold">Photo Description</h5>
+            <div className="mb-2">
+              <p className="text-gray-700">{photo.description}</p>
+              <p className="text-gray-700">Size: {photo.width}x{photo.height}</p>
+            </div>
+            <h5 className="text-lg font-semibold">Photographer</h5>
+            <div>
+              <p className="text-gray-700">Name: {photo.user.name}</p>
+              <p className="text-gray-700">Bio: {photo.user.bio}</p>
+              <p className="text-gray-700">Location: {photo.user.location}</p>
+              <p className="text-gray-700">Instagram:  {photo.user.instagram_username}</p>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+      
       )}
     </div>
   );

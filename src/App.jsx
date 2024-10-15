@@ -16,7 +16,7 @@ function App() {
           <Route index element={<PhotoList />} />
           <Route path=":id" element={<PhotoDetail />} />
         </Route>
-        <Route path='setting' element={<SettingPage />} />
+        <Route path="setting" element={<SettingPage />} />
         <Route path="*" element={<NotFoundPage />} /> {/* Catch-all for all other paths */}
       </Route>,
     ),
