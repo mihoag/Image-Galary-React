@@ -5,7 +5,7 @@ const ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 
 console.log(UNSPLASH_API_URL, ACCESS_KEY);
 
-export const fetchPhotoApi = async (page,per_page) => {
+export const fetchPhotoApi = async (page, per_page) => {
   const response = await axios.get(`${UNSPLASH_API_URL}/photos`, {
     params: { page, per_page, client_id: ACCESS_KEY },
   });
@@ -18,4 +18,3 @@ export const fetchPhotoDetailApi = async (id) => {
   });
   return response;
 };
-

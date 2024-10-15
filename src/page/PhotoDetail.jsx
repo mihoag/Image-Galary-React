@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
@@ -18,7 +17,7 @@ const PhotoDetail = () => {
         setPhoto(response.data);
       } catch (error) {
         console.error('Error fetching photo:', error);
-        toast.error('Failed to fetch photo. Please try again later.', { position: "bottom-right" })
+        toast.error('Failed to fetch photo. Please try again later.', { position: 'bottom-right' });
       }
       setLoading(false);
     };
@@ -27,13 +26,8 @@ const PhotoDetail = () => {
 
   return (
     <div className="container mx-auto p-6">
-    
-    {loading &&<div className="flex justify-center items-center h-screen">
-       <Spinner loading={loading} />
-    </div>}
-    {
-    photo &&
-    
+      <Spinner alignStype={'flex justify-center items-center h-screen'} loading={loading} />
+      {photo && (
         <section className="py-5">
           <div className="container mx-auto">
             <div className="lg:flex lg:space-x-5">
@@ -48,40 +42,34 @@ const PhotoDetail = () => {
                     />
                   </a>
                 </div>
-    
+
                 {/* Extra Images */}
-                
               </aside>
-    
+
               {/* Image Details */}
               <main className="lg:w-1/2">
                 <div className="lg:pl-3">
                   <h4 className="text-2xl font-bold text-gray-900">The title of the image</h4>
 
-    
                   {/* Category and Brand Info */}
                   <div className="my-4">
-                      <div className='my-1'>
-                        <dt className="font-bold">Description:</dt>
-                        <dd className="text-gray-600">{photo.alt_description}</dd>
-                      </div>
-                      <div className='my-1'>
-                        <dt className="font-bold">Author:</dt>
-                        <dd className="text-gray-600">{photo.user.name}</dd>
-                      </div>
+                    <div className="my-1">
+                      <dt className="font-bold">Description:</dt>
+                      <dd className="text-gray-600">{photo.alt_description}</dd>
+                    </div>
+                    <div className="my-1">
+                      <dt className="font-bold">Author:</dt>
+                      <dd className="text-gray-600">{photo.user.name}</dd>
+                    </div>
                   </div>
-
                 </div>
               </main>
             </div>
           </div>
         </section>
-   }
-
-  </div>
-  )
-
+      )}
+    </div>
+  );
 };
 
 export default PhotoDetail;
-

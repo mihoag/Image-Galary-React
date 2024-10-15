@@ -1,4 +1,4 @@
-const Button = ({text, type = 'button'}) => {
+const Button = ({ text, type = 'button' }) => {
   return (
     <button
       type={type}
