@@ -17,12 +17,11 @@ function App() {
     createRoutesFromElements(
       <Route path='/' element={<MainLayout />}>
         <Route index element={<HomePage />} />
-        <Route path='/photos' element={<PhotoList />} />
-        <Route
-          path='/photos/:id'
-          element={<PhotoDetail/>}
-        />
-         <Route path='*' element={<NotFoundPage />} />
+        <Route path='photos'>
+          <Route index element={<PhotoList />} />
+          <Route path=':id' element={<PhotoDetail />} />
+        </Route>
+        <Route path='*' element={<NotFoundPage />} /> {/* Catch-all for all other paths */}
       </Route>
       
     )

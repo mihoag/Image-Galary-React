@@ -19,8 +19,7 @@ const PhotoList = () => {
       try {
         // Sleep for 2 seconds to show loading spinner
         await sleep(2000);
-       
-        const response = await fetchPhotoApi(10);
+        const response = await fetchPhotoApi(page);
         setPhotos((prevPhotos) => [...prevPhotos, ...response.data]);
         setHasMore(response.data.length > 0);
       } catch (error) {
