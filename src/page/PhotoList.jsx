@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
 import Card from '../components/Card';
-
-const UNSPLASH_API_URL = 'https://api.unsplash.com';
-const ACCESS_KEY = 'DG4czygItrcnGUn8xJYplRtc0ZvMFRowuugZl107jyE';
+import { fetchPhotoApi } from '../api/unsplash';
 
 const PhotoList = () => {
   const [photos, setPhotos] = useState([]);
@@ -22,12 +19,8 @@ const PhotoList = () => {
       try {
         // Sleep for 2 seconds to show loading spinner
         await sleep(2000);
-        const response = await axios.get(`${UNSPLASH_API_URL}/photos`, {
-          params: { page, per_page: 10, client_id: ACCESS_KEY },
-        });
-
-        console.log(response.data);
-
+       
+        const response = await fetchPhotoApi(10);
         setPhotos((prevPhotos) => [...prevPhotos, ...response.data]);
         setHasMore(response.data.length > 0);
       } catch (error) {
@@ -59,7 +52,6 @@ const PhotoList = () => {
 
     <div className="container mx-auto p-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-
       {photos.map((photo) => (
         <Link  key={photo.id} to={`/photos/${photo.id}`}>
         <Card
@@ -70,9 +62,10 @@ const PhotoList = () => {
        </Link>
       ))}
       </div>
+
       <div className="flex justify-center items-center mt-6">
         <Spinner loading={loading} />
-       </div>
+      </div>
 
       {!hasMore && <div className="end">No more photos</div>}
     </div>

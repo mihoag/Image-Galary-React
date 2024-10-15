@@ -3,9 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
-
-const UNSPLASH_API_URL = 'https://api.unsplash.com/photos';
-const ACCESS_KEY = "DG4czygItrcnGUn8xJYplRtc0ZvMFRowuugZl107jyE";
+import { fetchPhotoDetailApi } from '../api/unsplash';
 
 const PhotoDetail = () => {
   const { id } = useParams();
@@ -16,9 +14,7 @@ const PhotoDetail = () => {
     const fetchPhoto = async () => {
       await sleep(1000);
       try {
-        const response = await axios.get(`${UNSPLASH_API_URL}/${id}`, {
-          params: { client_id: ACCESS_KEY },
-        });
+        const response = await fetchPhotoDetailApi(id);
         setPhoto(response.data);
       } catch (error) {
         console.error('Error fetching photo:', error);
