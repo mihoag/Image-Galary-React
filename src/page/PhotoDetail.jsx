@@ -29,32 +29,33 @@ const PhotoDetail = () => {
       <Spinner alignStype={'flex justify-center items-center h-screen'} loading={loading} />
       {photo && (
         <div className="container mx-auto mt-4 mb-4">
-        <h5 className="text-white font-light mb-3">
-          Photo by: <span id="photo-user-name">${photo.user.name}</span>
-        </h5>
-        <div className="border rounded-lg overflow-hidden">
-          <img className="w-full h-auto" src={photo.urls.full} alt="Photo by ${photo.user.name}" />
-          <div className="p-4">
-          <h5 className="text-lg font-semibold">Photo Title</h5>
-            <div className="mb-2">
-              <p className="text-gray-700">Title of the photo</p>
-            </div>
-            <h5 className="text-lg font-semibold">Photo Description</h5>
-            <div className="mb-2">
-              <p className="text-gray-700">{photo.description}</p>
-              <p className="text-gray-700">Size: {photo.width}x{photo.height}</p>
-            </div>
-            <h5 className="text-lg font-semibold">Photographer</h5>
-            <div>
-              <p className="text-gray-700">Name: {photo.user.name}</p>
-              <p className="text-gray-700">Bio: {photo.user.bio}</p>
-              <p className="text-gray-700">Location: {photo.user.location}</p>
-              <p className="text-gray-700">Instagram:  {photo.user.instagram_username}</p>
+          <h5 className="text-white font-light mb-3">
+            Photo by: <span id="photo-user-name">${photo.user.name}</span>
+          </h5>
+          <div className="border rounded-lg overflow-hidden">
+            <img className="w-full h-auto" src={photo.urls.full} alt="Photo by ${photo.user.name}" />
+            <div className="p-4">
+              <h5 className="text-lg font-semibold">Photo Title</h5>
+              <div className="mb-2">
+                <p className="text-gray-700">Title of the photo</p>
+              </div>
+              <h5 className="text-lg font-semibold">Photo Description</h5>
+              <div className="mb-2">
+                <p className="text-gray-700">{photo.description}</p>
+                <p className="text-gray-700">
+                  Size: {photo.width}x{photo.height}
+                </p>
+              </div>
+              <h5 className="text-lg font-semibold">Photographer</h5>
+              <div>
+                <p className="text-gray-700">Name: {photo.user.name}</p>
+                <p className="text-gray-700">Bio: {photo.user.bio}</p>
+                <p className="text-gray-700">Location: {photo.user.location}</p>
+                <p className="text-gray-700">Instagram: {photo.user.instagram_username}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
       )}
     </div>
   );
